@@ -134,7 +134,7 @@ export default function Reports() {
                   <CardTitle>Parts Ordered vs Fitted</CardTitle>
                   <CardDescription>Identifying the "ordered but not fitted" discrepancy</CardDescription>
                 </CardHeader>
-                <CardContent className="h-[400px]">
+                <CardContent className="h-[400px] min-h-[400px]">
                   <ResponsiveContainer width="100%" height="100%">
                     <BarChart data={accountabilityData}>
                       <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f0" className="dark:stroke-slate-800" />
@@ -187,7 +187,7 @@ export default function Reports() {
                 <CardTitle>Mechanic Performance</CardTitle>
                 <CardDescription>Jobs completed per mechanic this month</CardDescription>
               </CardHeader>
-              <CardContent className="h-[400px]">
+              <CardContent className="h-[400px] min-h-[400px]">
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart data={productivityData} layout="vertical">
                     <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke="#e2e8f0" className="dark:stroke-slate-800" />

@@ -48,10 +48,24 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         .from('profiles')
         .select('*')
         .eq('id', userId)
-        .single();
+        .maybeSingle();
 
       if (error) throw error;
-      setProfile(data);
+
+      if (!data) {
+        // If profile is missing, try a quick retry in case it's a new user and the trigger is slow
+        await new Promise(resolve => setTimeout(resolve, 500));
+        const { data: retryData, error: retryError } = await supabase
+          .from('profiles')
+          .select('*')
+          .eq('id', userId)
+          .maybeSingle();
+        
+        if (retryError) throw retryError;
+        setProfile(retryData);
+      } else {
+        setProfile(data);
+      }
     } catch (error) {
       console.error('Error fetching profile:', error);
     } finally {

@@ -174,7 +174,7 @@ export default function ManagerDashboard() {
             </div>
           </CardHeader>
           <CardContent className="p-8">
-            <div className="h-[450px] w-full">
+            <div className="h-[450px] w-full min-h-[450px]">
               <ResponsiveContainer width="100%" height="100%">
                 <AreaChart data={chartData}>
                   <defs>
