@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { supabase } from '@/lib/supabase';
 import { useAuth } from '@/contexts/AuthContext';
 import { JobCard } from '@/types';
@@ -17,6 +17,7 @@ import {
 import { format } from 'date-fns';
 
 export default function MechanicDashboard() {
+  const navigate = useNavigate();
   const { profile } = useAuth();
   const [openJobs, setOpenJobs] = useState<JobCard[]>([]);
   const [stats, setStats] = useState({
@@ -68,11 +69,9 @@ export default function MechanicDashboard() {
           <h1 className="text-3xl font-bold text-slate-900">Mechanic Dashboard</h1>
           <p className="text-slate-500">Welcome back, {profile?.full_name}</p>
         </div>
-        <Button asChild className="bg-blue-600 hover:bg-blue-700">
-          <Link to="/jobs/new">
-            <Plus className="w-4 h-4 mr-2" />
-            New Job Card
-          </Link>
+        <Button className="bg-blue-600 hover:bg-blue-700" onClick={() => navigate('/jobs/new')}>
+          <Plus className="w-4 h-4 mr-2" />
+          New Job Card
         </Button>
       </div>
 

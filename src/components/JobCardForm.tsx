@@ -51,9 +51,9 @@ export default function JobCardForm({ job, open, onOpenChange, onSuccess }: JobC
       setFormData({
         vehicle_id: job.vehicle_id,
         mechanic_id: job.mechanic_id,
-        job_type: job.job_type,
+        job_type: (['service', 'repair', 'inspection'].includes(job.job_type) ? job.job_type : 'service') as 'service' | 'repair' | 'inspection',
         odometer_at_job: job.odometer_at_job,
-        complaint_details: job.complaint_details,
+        complaint_details: job.complaint_details || '',
       });
     } else {
       setFormData({

@@ -147,7 +147,7 @@ export default function FleetList() {
                     <p className="text-muted-foreground font-bold">{vehicle.year}</p>
                   </div>
                   <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
+                    <DropdownMenuTrigger>
                       <Button variant="ghost" size="icon" className="rounded-2xl h-12 w-12 hover:bg-secondary">
                         <MoreVertical className="w-6 h-6" />
                       </Button>

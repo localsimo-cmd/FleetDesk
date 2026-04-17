@@ -82,7 +82,7 @@ export default function Login() {
               />
             </div>
           </CardContent>
-          <CardFooter className="p-0 flex flex-col items-center gap-4">
+          <CardFooter className="p-0 flex flex-col items-center gap-6">
             <Button size="lg" className="w-full bg-primary text-primary-foreground shadow-premium rounded-2xl h-16 text-lg font-black uppercase tracking-widest hover:opacity-90 transition-opacity" type="submit" disabled={loading}>
               {loading ? (
                 <>
@@ -93,6 +93,20 @@ export default function Login() {
                 'Sign In'
               )}
             </Button>
+            
+            <div className="w-full border-t border-border pt-4 text-center">
+              <p className="text-[10px] font-bold text-muted-foreground uppercase mb-2">Stuck or seeing errors?</p>
+              <button 
+                type="button"
+                onClick={async () => {
+                  await supabase.auth.signOut();
+                  window.location.reload();
+                }}
+                className="text-[10px] font-black uppercase tracking-widest text-primary hover:underline"
+              >
+                Force System Reset (Clear Session)
+              </button>
+            </div>
           </CardFooter>
         </form>
       </Card>

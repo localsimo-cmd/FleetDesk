@@ -193,7 +193,7 @@ export default function AllJobs() {
                           <FileText className="w-5 h-5 text-current" />
                         </Link>
                         <DropdownMenu>
-                          <DropdownMenuTrigger asChild>
+                          <DropdownMenuTrigger>
                             <Button variant="ghost" size="icon" className="rounded-2xl h-12 w-12 hover:bg-secondary">
                               <MoreVertical className="w-6 h-6" />
                             </Button>

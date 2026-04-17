@@ -14,6 +14,7 @@ import Alerts from '@/pages/manager/Alerts';
 import Settings from '@/pages/manager/Settings';
 import NewJob from '@/pages/manager/NewJob';
 import Catalogue from '@/pages/manager/Catalogue';
+import ErrorBoundary from '@/components/ErrorBoundary';
 import { Toaster } from 'sonner';
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
@@ -35,42 +36,49 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
 }
 
 function RootRedirect() {
+  const { profile } = useAuth();
+  if (profile?.role === 'mechanic') {
+    return <Navigate to="/mechanic" />;
+  }
   return <Navigate to="/manager" />;
 }
 
 export default function App() {
   return (
     <ThemeProvider defaultTheme="light" storageKey="fleetdesk-theme">
-      <AuthProvider>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/login" element={<Login />} />
-            
-            <Route path="/" element={
-              <ProtectedRoute>
-                <Layout />
-              </ProtectedRoute>
-            }>
-              <Route index element={<RootRedirect />} />
+      <ErrorBoundary>
+        <AuthProvider>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/login" element={<Login />} />
               
-              <Route path="manager" element={<ManagerDashboard />} />
-              <Route path="fleet" element={<FleetList />} />
-              <Route path="reports" element={<Reports />} />
-              <Route path="alerts" element={<Alerts />} />
-              <Route path="jobs" element={<AllJobs />} />
-              <Route path="catalogue" element={<Catalogue />} />
-              
-              {/* Shared Routes */}
-              <Route path="jobs/:id" element={<JobDetail />} />
-              <Route path="jobs/new" element={<NewJob />} />
-              
-              <Route path="settings" element={<Settings />} />
-              <Route path="*" element={<Navigate to="/" replace />} />
-            </Route>
-          </Routes>
-        </BrowserRouter>
-        <Toaster position="top-right" />
-      </AuthProvider>
+              <Route path="/" element={
+                <ProtectedRoute>
+                  <Layout />
+                </ProtectedRoute>
+              }>
+                <Route index element={<RootRedirect />} />
+                
+                <Route path="manager" element={<ManagerDashboard />} />
+                <Route path="mechanic" element={<MechanicDashboard />} />
+                <Route path="fleet" element={<FleetList />} />
+                <Route path="reports" element={<Reports />} />
+                <Route path="alerts" element={<Alerts />} />
+                <Route path="jobs" element={<AllJobs />} />
+                <Route path="catalogue" element={<Catalogue />} />
+                
+                {/* Shared Routes */}
+                <Route path="jobs/:id" element={<JobDetail />} />
+                <Route path="jobs/new" element={<NewJob />} />
+                
+                <Route path="settings" element={<Settings />} />
+                <Route path="*" element={<Navigate to="/" replace />} />
+              </Route>
+            </Routes>
+          </BrowserRouter>
+          <Toaster position="top-right" />
+        </AuthProvider>
+      </ErrorBoundary>
     </ThemeProvider>
   );
 }
