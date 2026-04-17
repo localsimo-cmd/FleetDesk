@@ -14,7 +14,7 @@ import {
   TableHeader, 
   TableRow 
 } from '@/components/ui/table';
-import { format } from 'date-fns';
+import { safeFormat } from '@/lib/date-utils';
 import { 
   Search, 
   Plus, 
@@ -183,7 +183,7 @@ export default function FleetList() {
                       "text-xl font-black",
                       vehicle.tax_expiry && new Date(vehicle.tax_expiry) < new Date() ? "text-red-600" : "text-foreground"
                     )}>
-                      {vehicle.tax_expiry ? format(new Date(vehicle.tax_expiry), 'MMM dd, yyyy') : 'N/A'}
+                      {vehicle.tax_expiry ? safeFormat(vehicle.tax_expiry, 'MMM dd, yyyy') : 'N/A'}
                     </p>
                   </div>
                 </div>

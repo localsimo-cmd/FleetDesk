@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabase';
-import { format } from 'date-fns';
+import { safeFormat } from '@/lib/date-utils';
 import { 
   Truck, 
   Wrench, 
@@ -77,7 +77,7 @@ export default function ManagerDashboard() {
         d.setDate(d.getDate() - i);
         return {
           date: d.toISOString().split('T')[0],
-          name: format(d, 'EEE'),
+          name: safeFormat(d, 'EEE'),
           jobs: 0
         };
       }).reverse();
@@ -244,7 +244,7 @@ export default function ManagerDashboard() {
                       <div className="flex items-center justify-between mb-0.5">
                         <p className="text-lg font-black text-foreground truncate">{job.vehicle?.registration}</p>
                         <span className="text-[10px] font-black text-muted-foreground uppercase bg-secondary px-2 py-0.5 rounded-full">
-                          {format(new Date(job.opened_at), 'HH:mm')}
+                          {safeFormat(job.opened_at, 'HH:mm')}
                         </span>
                       </div>
                       <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest">{job.job_type} • #{job.job_number}</p>

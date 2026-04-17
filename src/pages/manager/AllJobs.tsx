@@ -27,7 +27,7 @@ import {
   FileText,
   ClipboardList
 } from 'lucide-react';
-import { format } from 'date-fns';
+import { safeFormat } from '@/lib/date-utils';
 import JobCardForm from '@/components/JobCardForm';
 import { 
   DropdownMenu, 
@@ -179,7 +179,7 @@ export default function AllJobs() {
                       </Badge>
                     </TableCell>
                     <TableCell className="font-bold text-muted-foreground text-sm">
-                      {format(new Date(job.opened_at), 'MMMM dd, yyyy')}
+                      {safeFormat(job.opened_at, 'MMMM dd, yyyy')}
                     </TableCell>
                     <TableCell className="text-right px-8">
                       <div className="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">

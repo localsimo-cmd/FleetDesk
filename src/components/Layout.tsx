@@ -38,7 +38,7 @@ export default function Layout() {
     navigate('/login');
   };
 
-  const navItems = [
+  const managerNavItems = [
     {
       label: 'Dashboard',
       path: '/manager',
@@ -75,6 +75,31 @@ export default function Layout() {
       icon: Settings,
     },
   ];
+
+  const mechanicNavItems = [
+    {
+      label: 'Job Center',
+      path: '/mechanic',
+      icon: LayoutDashboard,
+    },
+    {
+      label: 'Active Jobs',
+      path: '/jobs',
+      icon: ClipboardList,
+    },
+    {
+      label: 'Parts List',
+      path: '/catalogue',
+      icon: Package,
+    },
+    {
+      label: 'Settings',
+      path: '/settings',
+      icon: Settings,
+    },
+  ];
+
+  const navItems = profile?.role === 'mechanic' ? mechanicNavItems : managerNavItems;
 
   return (
     <div className="flex h-screen bg-background transition-colors duration-500">
@@ -125,13 +150,13 @@ export default function Layout() {
           <DropdownMenu>
             <DropdownMenuTrigger className={cn(
               buttonVariants({ variant: "ghost" }),
-              "w-full justify-start px-2 h-16 hover:bg-secondary rounded-2xl border-none cursor-pointer outline-none transition-all"
+              "w-full justify-start px-2 h-16 hover:bg-secondary rounded-2xl border-none cursor-pointer outline-none transition-all flex items-center gap-4"
             )}>
-              <div className="flex items-center gap-4 w-full px-2">
+              <div className="flex items-center gap-4 w-full px-2 text-left">
                 <div className="w-10 h-10 rounded-2xl bg-primary/10 flex items-center justify-center text-primary font-bold shrink-0 shadow-inner">
                   {profile?.full_name?.charAt(0) || user?.email?.charAt(0).toUpperCase() || <User className="w-5 h-5" />}
                 </div>
-                <div className="flex-1 min-w-0 text-left">
+                <div className="flex-1 min-w-0">
                   <p className="text-sm font-bold text-foreground truncate">
                     {profile?.full_name || user?.email?.split('@')[0]}
                   </p>

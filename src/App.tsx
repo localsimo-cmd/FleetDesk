@@ -14,6 +14,7 @@ import Alerts from '@/pages/manager/Alerts';
 import Settings from '@/pages/manager/Settings';
 import NewJob from '@/pages/manager/NewJob';
 import Catalogue from '@/pages/manager/Catalogue';
+import VehicleDetail from '@/pages/manager/VehicleDetail';
 import ErrorBoundary from '@/components/ErrorBoundary';
 import { Toaster } from 'sonner';
 
@@ -62,6 +63,7 @@ export default function App() {
                 <Route path="manager" element={<ManagerDashboard />} />
                 <Route path="mechanic" element={<MechanicDashboard />} />
                 <Route path="fleet" element={<FleetList />} />
+                <Route path="fleet/:id" element={<VehicleDetail />} />
                 <Route path="reports" element={<Reports />} />
                 <Route path="alerts" element={<Alerts />} />
                 <Route path="jobs" element={<AllJobs />} />

@@ -6,6 +6,7 @@ import { JobCard } from '@/types';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { safeFormat } from '@/lib/date-utils';
 import { 
   Plus, 
   ClipboardCheck, 
@@ -159,7 +160,7 @@ export default function MechanicDashboard() {
                     <div className="flex items-center justify-between text-sm text-slate-500">
                       <div className="flex items-center gap-1">
                         <Clock className="w-4 h-4" />
-                        <span>Opened {format(new Date(job.opened_at), 'MMM d, h:mm a')}</span>
+                        <span>Opened {safeFormat(job.opened_at, 'MMM d, h:mm a')}</span>
                       </div>
                       <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                     </div>

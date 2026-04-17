@@ -21,7 +21,7 @@ import {
   Loader2,
   Search
 } from 'lucide-react';
-import { format } from 'date-fns';
+import { safeFormat } from '@/lib/date-utils';
 import { toast } from 'sonner';
 import { cn } from '@/lib/utils';
 import { 
@@ -184,7 +184,7 @@ export default function JobDetail() {
       if (partsError) throw partsError;
 
       toast.success('Job card closed successfully');
-      navigate('/manager');
+      navigate(profile?.role === 'mechanic' ? '/mechanic' : '/manager');
     } catch (error) {
       console.error('Error closing job:', error);
       toast.error('Failed to close job card');
@@ -274,8 +274,8 @@ export default function JobDetail() {
           <Card className="border-none shadow-smooth bg-card rounded-[2rem] p-8 flex flex-col justify-between h-44 hover:shadow-premium transition-all">
             <div className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">Opened On</div>
             <div className="text-xl font-black uppercase tracking-tighter leading-none italic">
-              {format(new Date(job.opened_at), 'MMMM dd')}<br/>
-              <span className="text-sm opacity-50 uppercase not-italic">{format(new Date(job.opened_at), 'HH:mm')}</span>
+              {safeFormat(job.opened_at, 'MMMM dd')}<br/>
+              <span className="text-sm opacity-50 uppercase not-italic">{safeFormat(job.opened_at, 'HH:mm')}</span>
             </div>
           </Card>
         </div>
