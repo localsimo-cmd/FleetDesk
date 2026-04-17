@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { supabase } from '@/src/lib/supabase';
-import { PartCatalogueItem } from '@/src/types';
+import { supabase } from '@/lib/supabase';
+import { PartCatalogueItem } from '@/types';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';

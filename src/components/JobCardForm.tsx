@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { supabase } from '@/src/lib/supabase';
-import { Vehicle, JobCard } from '@/src/types';
+import { supabase } from '@/lib/supabase';
+import { Vehicle, JobCard } from '@/types';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';

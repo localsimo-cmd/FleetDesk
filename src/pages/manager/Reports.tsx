@@ -22,7 +22,7 @@ import {
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { supabase } from '@/src/lib/supabase';
+import { supabase } from '@/lib/supabase';
 
 export default function Reports() {
   const [accountabilityData, setAccountabilityData] = useState<any[]>([]);

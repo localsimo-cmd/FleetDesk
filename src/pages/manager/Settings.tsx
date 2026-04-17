@@ -14,8 +14,8 @@ import {
   Mail,
   Lock
 } from 'lucide-react';
-import { useAuth } from '@/src/contexts/AuthContext';
-import { useTheme } from '@/src/contexts/ThemeContext';
+import { useAuth } from '@/contexts/AuthContext';
+import { useTheme } from '@/contexts/ThemeContext';
 
 export default function Settings() {
   const { user } = useAuth();

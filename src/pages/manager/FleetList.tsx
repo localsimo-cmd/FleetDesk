@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { supabase } from '@/src/lib/supabase';
-import { Vehicle } from '@/src/types';
+import { supabase } from '@/lib/supabase';
+import { Vehicle } from '@/types';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button, buttonVariants } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -29,7 +29,7 @@ import {
   FileText,
   Truck
 } from 'lucide-react';
-import VehicleForm from '@/src/components/VehicleForm';
+import VehicleForm from '@/components/VehicleForm';
 import { 
   DropdownMenu, 
   DropdownMenuContent, 

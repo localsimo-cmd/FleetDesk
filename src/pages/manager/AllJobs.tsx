@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { supabase } from '@/src/lib/supabase';
-import { JobCard } from '@/src/types';
+import { supabase } from '@/lib/supabase';
+import { JobCard } from '@/types';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button, buttonVariants } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -28,7 +28,7 @@ import {
   ClipboardList
 } from 'lucide-react';
 import { format } from 'date-fns';
-import JobCardForm from '@/src/components/JobCardForm';
+import JobCardForm from '@/components/JobCardForm';
 import { 
   DropdownMenu, 
   DropdownMenuContent, 

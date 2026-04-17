@@ -1,19 +1,19 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { AuthProvider, useAuth } from '@/src/contexts/AuthContext';
-import { ThemeProvider } from '@/src/contexts/ThemeContext';
-import Layout from '@/src/components/Layout';
-import Login from '@/src/pages/Login';
-import MechanicDashboard from '@/src/pages/mechanic/Dashboard';
-import JobDetail from '@/src/pages/mechanic/JobDetail';
-import ManagerDashboard from '@/src/pages/manager/Dashboard';
-import FleetList from '@/src/pages/manager/FleetList';
-import Reports from '@/src/pages/manager/Reports';
-import AllJobs from '@/src/pages/manager/AllJobs';
-import Alerts from '@/src/pages/manager/Alerts';
-import Settings from '@/src/pages/manager/Settings';
-import NewJob from '@/src/pages/manager/NewJob';
-import Catalogue from '@/src/pages/manager/Catalogue';
+import { AuthProvider, useAuth } from '@/contexts/AuthContext';
+import { ThemeProvider } from '@/contexts/ThemeContext';
+import Layout from '@/components/Layout';
+import Login from '@/pages/Login';
+import MechanicDashboard from '@/pages/mechanic/Dashboard';
+import JobDetail from '@/pages/mechanic/JobDetail';
+import ManagerDashboard from '@/pages/manager/Dashboard';
+import FleetList from '@/pages/manager/FleetList';
+import Reports from '@/pages/manager/Reports';
+import AllJobs from '@/pages/manager/AllJobs';
+import Alerts from '@/pages/manager/Alerts';
+import Settings from '@/pages/manager/Settings';
+import NewJob from '@/pages/manager/NewJob';
+import Catalogue from '@/pages/manager/Catalogue';
 import { Toaster } from 'sonner';
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
@@ -65,6 +65,7 @@ export default function App() {
               <Route path="jobs/new" element={<NewJob />} />
               
               <Route path="settings" element={<Settings />} />
+              <Route path="*" element={<Navigate to="/" replace />} />
             </Route>
           </Routes>
         </BrowserRouter>
