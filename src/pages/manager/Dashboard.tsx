@@ -174,8 +174,8 @@ export default function ManagerDashboard() {
             </div>
           </CardHeader>
           <CardContent className="p-8">
-            <div className="h-[450px] w-full min-h-[450px]">
-              <ResponsiveContainer width="100%" height="100%">
+            <div className="h-[450px] w-full min-h-[450px] relative">
+              <ResponsiveContainer width="100%" height="100%" minWidth={0} minHeight={0}>
                 <AreaChart data={chartData}>
                   <defs>
                     <linearGradient id="colorJobs" x1="0" y1="0" x2="0" y2="1">

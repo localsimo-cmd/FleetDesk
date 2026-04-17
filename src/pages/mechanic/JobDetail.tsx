@@ -66,13 +66,16 @@ export default function JobDetail() {
   async function fetchJobDetails() {
     setLoading(true);
     try {
-      const { data: jobData, error: jobError } = await supabase
+      const { data: jobs, error: jobError } = await supabase
         .from('job_cards')
         .select('*, vehicle:vehicles(*), mechanic:profiles(*)')
         .eq('id', id)
-        .single();
+        .limit(1);
 
       if (jobError) throw jobError;
+      const jobData = jobs?.[0];
+      if (!jobData) throw new Error('Job not found');
+
       setJob(jobData);
       setNotes(jobData.notes || '');
       setOdometerOut(jobData.odometer_out?.toString() || '');

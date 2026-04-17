@@ -187,8 +187,8 @@ export default function Reports() {
                 <CardTitle>Mechanic Performance</CardTitle>
                 <CardDescription>Jobs completed per mechanic this month</CardDescription>
               </CardHeader>
-              <CardContent className="h-[400px] min-h-[400px]">
-                <ResponsiveContainer width="100%" height="100%">
+              <CardContent className="h-[400px] min-h-[400px] relative">
+                <ResponsiveContainer width="100%" height="100%" minWidth={0} minHeight={0}>
                   <BarChart data={productivityData} layout="vertical">
                     <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke="#e2e8f0" className="dark:stroke-slate-800" />
                     <XAxis type="number" axisLine={false} tickLine={false} tick={{ fill: '#94a3b8', fontSize: 12 }} />

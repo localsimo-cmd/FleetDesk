@@ -154,11 +154,13 @@ export default function Layout() {
           </Button>
           
           <DropdownMenu>
-            <DropdownMenuTrigger className={cn(
-              buttonVariants({ variant: "ghost" }),
-              "w-full justify-start px-2 h-16 hover:bg-secondary rounded-2xl border-none cursor-pointer outline-none transition-all flex items-center gap-4"
-            )}>
-              <div className="flex items-center gap-4 w-full px-2 text-left">
+            <DropdownMenuTrigger
+              className={cn(
+                buttonVariants({ variant: "ghost" }),
+                "w-full justify-start px-2 h-16 hover:bg-secondary rounded-2xl border-none cursor-pointer outline-none transition-all flex items-center gap-4"
+              )}
+            >
+              <div className="flex items-center gap-4 w-full px-2 text-left pointer-events-none">
                 <div className="w-10 h-10 rounded-2xl bg-primary/10 flex items-center justify-center text-primary font-bold shrink-0 shadow-inner">
                   {profile?.full_name?.charAt(0) || user?.email?.charAt(0).toUpperCase() || <User className="w-5 h-5" />}
                 </div>

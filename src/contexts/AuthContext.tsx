@@ -45,27 +45,28 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   async function fetchProfile(userId: string) {
     setLoading(true);
     try {
+      // Use limit(1) instead of maybeSingle() to avoid 406 errors in some environments
       const { data, error } = await supabase
         .from('profiles')
         .select('*')
         .eq('id', userId)
-        .maybeSingle();
+        .limit(1);
 
       if (error) throw error;
 
-      if (!data) {
+      if (!data || data.length === 0) {
         // If profile is missing, try a quick retry in case it's a new user and the trigger is slow
         await new Promise(resolve => setTimeout(resolve, 800));
         const { data: retryData, error: retryError } = await supabase
           .from('profiles')
           .select('*')
           .eq('id', userId)
-          .maybeSingle();
+          .limit(1);
         
         if (retryError) throw retryError;
-        setProfile(retryData);
+        setProfile(retryData?.[0] || null);
       } else {
-        setProfile(data);
+        setProfile(data[0]);
       }
     } catch (error) {
       console.error('Error fetching profile:', error);

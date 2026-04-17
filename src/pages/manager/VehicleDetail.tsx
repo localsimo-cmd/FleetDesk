@@ -36,13 +36,16 @@ export default function VehicleDetail() {
   async function fetchVehicleData() {
     setLoading(true);
     try {
-      const { data: vehicleData, error: vehicleError } = await supabase
+      const { data: vehicles, error: vehicleError } = await supabase
         .from('vehicles')
         .select('*')
         .eq('id', id)
-        .single();
+        .limit(1);
 
       if (vehicleError) throw vehicleError;
+      const vehicleData = vehicles?.[0];
+      if (!vehicleData) throw new Error('Vehicle not found');
+      
       setVehicle(vehicleData);
 
       const { data: jobsData, error: jobsError } = await supabase
