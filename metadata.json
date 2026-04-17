@@ -1,0 +1,5 @@
+{
+  "name": "FleetDesk",
+  "description": "A comprehensive fleet maintenance management system for tracking vehicle history, parts accountability, and service intervals.",
+  "requestFramePermissions": []
+}
