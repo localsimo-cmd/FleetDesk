@@ -34,8 +34,14 @@ export default function Layout() {
   const navigate = useNavigate();
 
   const handleSignOut = async () => {
-    await signOut();
-    navigate('/login');
+    try {
+      await signOut();
+      window.location.href = '/login';
+    } catch (error) {
+      console.error('Sign out error:', error);
+      // Hard refresh as fallback
+      window.location.href = '/login';
+    }
   };
 
   const managerNavItems = [

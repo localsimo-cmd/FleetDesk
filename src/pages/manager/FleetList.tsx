@@ -147,10 +147,8 @@ export default function FleetList() {
                     <p className="text-muted-foreground font-bold">{vehicle.year}</p>
                   </div>
                   <DropdownMenu>
-                    <DropdownMenuTrigger>
-                      <Button variant="ghost" size="icon" className="rounded-2xl h-12 w-12 hover:bg-secondary">
-                        <MoreVertical className="w-6 h-6" />
-                      </Button>
+                    <DropdownMenuTrigger className="rounded-2xl h-12 w-12 hover:bg-secondary flex items-center justify-center outline-none transition-all cursor-pointer">
+                      <MoreVertical className="w-6 h-6" />
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end" className="rounded-2xl p-2 w-48 shadow-premium border-border">
                       <DropdownMenuItem onClick={() => {
